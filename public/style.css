@@ -1,0 +1,10 @@
+body{
+    background-color: rgb(179, 220, 207);
+}
+.chat{
+    background-color: aqua;
+}
+.msg{
+    background-color: blueviolet;
+    color: black;
+}
