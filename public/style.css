@@ -1,10 +1,23 @@
 body{
     background-color: rgb(179, 220, 207);
+    padding: 10px;
+}
+.top-heading{
+    text-align: center;
 }
 .chat{
+    border-radius: 10px ;
     background-color: aqua;
+    padding: 5px;
+    display: inline-block;
 }
 .msg{
+    border-radius: 30px;
     background-color: blueviolet;
     color: black;
+    padding: 20px;
+    display: inline-block;
+}
+.send-by , .received-by{
+    font-weight: bolder;
 }

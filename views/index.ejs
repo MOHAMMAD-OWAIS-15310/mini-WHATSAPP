@@ -7,15 +7,29 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>my chatting context</h1>
+    <h1 class="top-heading">My Chats</h1>
+    <form method="GET" action="/chats/new">
+        <button>Create New Chat</button>
+    </form>
+    <br>
     <div>
         <% for(let chat of chats){ %>
             <div class="chat">
-                <p>send by : <%= chat.from %> </p>
-                <div class="msg">Message : <%= chat.message %></div> 
-                <p>received by : <%=  chat.to %> <br></p>
+                <p class="send-by">send by : <%= chat.from %> </p>
+                <div class="msg">
+                    Message : <%= chat.message %>
+                    <form method="get" action="/chats/<%=chat.id%>/edit">
+                        <br>
+                    <button>edit</button>
+                </form>
+                </div> 
+                <p class="received-by">received by : <%=  chat.to %> <br></p>
                 <hr>
+                <p>Time - <%= chat.created_at.toString().split(" ")[4] %></p>
+                <p>Date : <%= chat.created_at.toString().split(" ").slice(0,4).join("-")%></p>
+                
             </div>
+            <br> <br>
         <% } %>
 
     </div>
