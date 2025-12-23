@@ -3,11 +3,13 @@ const app=express();
 const mongoose=require("mongoose");
 const path=require("path");
 const Chat = require("./models/chats.js");
+const methodOverride=require("method-override")
 
 app.set("views",path.join(__dirname,"views"));
 app.set("view engine","ejs");
 app.use(express.static(path.join(__dirname,"public")));
 app.use(express.urlencoded({extended:true}));
+app.use(methodOverride("_method"))
 
 
 app.get("/",(req,res)=>{
@@ -58,6 +60,14 @@ app.get("/chats/:id/edit",async (req,res)=>{
     let {id}=req.params;
     let chat= await Chat.findById(id); //await bc we dont use then here , so put sync upar
     res.render("edit.ejs",{chat});
+})
+
+//update route
+app.put("/chats/:id",async(req,res)=>{
+    let {id}=req.params;
+    let {message : newMessage}=req.body;
+    let updatedChat=await Chat.findByIdAndUpdate(id , {message : newMessage},{runValidators:true, new : true});
+    res.redirect("/chats");
 })
 
 
