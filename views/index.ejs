@@ -17,11 +17,15 @@
             <div class="chat">
                 <p class="send-by">send by : <%= chat.from %> </p>
                 <div class="msg">
-                    Message : <%= chat.message %>
+                    <b>Message</b> : <%= chat.message %>
                     <form method="get" action="/chats/<%=chat.id%>/edit">
                         <br>
                     <button>edit</button>
-                </form>
+                    </form>
+                    <form method="post" action="/chats/<%=chat.id%>?_method=DELETE">
+                        <br>
+                    <button>Delete </button>
+                    </form>
                 </div> 
                 <p class="received-by">received by : <%=  chat.to %> <br></p>
                 <hr>
